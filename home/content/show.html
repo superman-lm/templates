@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}articlestyle.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="top">
+  <div class="top_l area">
+    <div class="loginBar fr"><a href="#" class="none">返回首页</a><a href="#">博客官方</a> <a href="#">联系我们</a><span><a href="#">立即在线沟通</a></span></div>
+ </div>
+</div>
+<div class="pages_aut area">
+  <div class="logo fl">
+    <em><img src="{IMG_PATH}zzzsimgs/enroll_logo.jpg" /></em>
+  </div>
+  <div class="au_r fr"><img src="{IMG_PATH}zzzsimgs/top_fr.jpg" /></div>
+</div>
+<div class="pages_list area">
+  <div class="aut_l fl">
+     <h2>{$title}</h2>
+     <div class="aut_l_top">
+       <div class="atice_list">
+	   {if $allow_visitor==1}
+        {$content}
+		{if $voteid}<script language="javascript" src="{APP_PATH}index.php?m=vote&c=index&a=show&action=js&subjectid={$voteid}&type=2"></script>{/if}
+	   {else}<CENTER><a href="{APP_PATH}index.php?m=content&c=readpoint&allow_visitor={$allow_visitor}"><font color="red">阅读此信息需要您支付 <B><I>{$readpoint} {if $paytype}元{else}点{/if}</I></B>，点击这里支付</font></a></CENTER>
+		{/if}	
+       </div>
+       <div class="aut_l_top_prenext">
+          <div class="artic_r">上一篇：<a href="{$previous_page[url]}">{$previous_page[title]}</a></div>
+          <div class="artic_l">下一篇：<a href="{$next_page[url]}">{$next_page[title]}</a></div>
+       </div>
+     </div>
+     <div class="aut_l_botm">
+      <!-- <div class="aut_review">
+          <h3>网友讨论</h3>
+          <div class="aut_rev"></div>-->
+         <div class="review">
+          {if $allow_comment && module_exists('comment')}
+      <iframe src="{APP_PATH}index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+      <!--<div class="box">
+        		<h5>评论排行</h5>
+				 {pc:comment action="bang" siteid="$siteid" cache="3600"}
+            	<ul class="content list blue f14 row-2">
+				{loop $data $r}
+                	<li><a href="{$r[url]}" target="_blank">{str_cut($r[title], 40)}</a><span>({$r[total]})</span></li>
+					{/loop}
+                </ul>
+				{/pc}
+        </div>-->
+        {/if}
+         <!-- <div class="comm">
+             <h4>高考教育网</h4>
+             <div class="comm_list">
+                <p class="fl"><img src="imgs/03.jpg" /></p>
+               <form action="" method="get" class="forn fl">
+                 <textarea name="s" id="s" cols="45" rows="5" class="inp_btn"></textarea> 
+                 </form>
+                <input name="" type="button" value="发布" class="inp_bx" />
+             </div>
+          </div>-->
+         <!-- <div class="aut_aw">
+             <p>按时间顺序排</p>
+          </div>-->
+          <div class="aut_ty">
+             <p>更多热评文章</p>
+             <ul>
+			 {pc:content  action="hits" catid="$catid" num="4" thumb="1" order="views DESC" cache="3600"}
+			 {loop $data $r}
+             <li><img src="{thumb($v[thumb],41,47)}" width="41" height="47" /><a href="{$r[url]}">{$r[title]}</a></li>
+             {/loop}
+			 {/pc}
+           </ul>
+          </div>
+   <!--   </div>-->
+     </div>
+  </div>
+ 
+</div>
+ <div class="aut_r fr">
+     <div class="aut_r_t"><img src="{IMG_PATH}zzzsimgs/pic_01.jpg" /></div>
+     <div class="aut_r_a" style="padding-left:15px;">
+       <h3>热门文章</h3>
+	   {pc:content  action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+       <ul style="background:url({IMG_PATH}zzzsimgs/num_list.png) no-repeat; padding-left:20px;">
+	   {loop $data $r}
+          <li style="line-height:15px;"><a href="{$r[url]}" target="_blank" title="{$r[title]}">{str_cut($r[title], 28, '')}</a></li>
+       {/loop}  
+       </ul>
+	   {/pc}
+     </div>
+     <div class="aut_r_d"><img src="{IMG_PATH}zzzsimgs/pic_02.jpg" /></div>
+     <div class="aut_r_a">
+       <h3>相关文章</h3>
+	    {pc:content action="relation" relation="$relation" id="$id" catid="$catid" num="5" keywords="$rs[keywords]"}
+		{if $data}
+       <ul>
+	   {loop $data $r}
+          <li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+        {/loop}  
+       </ul>
+	   {/if}
+	   {/pc}
+     </div>
+     <div class="aut_r_d"><img src="{IMG_PATH}zzzsimgs/pic_032.jpg" /></div>
+  </div>
+<div class="mb10"></div>
+<script type="text/javascript">
+<!--
+	function show_ajax(obj) {
+		var keywords = $(obj).text();
+		var offset = $(obj).offset();
+		var jsonitem = '';
+		$.getJSON("{APP_PATH}index.php?m=content&c=index&a=json_list&type=keyword&modelid={$modelid}&id={$id}&keywords="+encodeURIComponent(keywords),
+				function(data){
+				var j = 1;
+				var string = "<div class='point key-float'><div style='position:relative'><div class='arro'></div>";
+				string += "<a href='JavaScript:;' onclick='$(this).parent().parent().remove();' hidefocus='true' class='close'><span>关闭</span></a><div class='contents f12'>";
+				if(data!=0) {
+				  $.each(data, function(i,item){
+					j = i+1;
+					jsonitem += "<a href='"+item.url+"' target='_blank'>"+j+"、"+item.title+"</a><BR>";
+					
+				  });
+					string += jsonitem;
+				} else {
+					string += '没有找到相关的信息！';
+				}
+					string += "</div><span class='o1'></span><span class='o2'></span><span class='o3'></span><span class='o4'></span></div></div>";		
+					$(obj).after(string);
+					$('.key-float').mouseover(
+						function (){
+							$(this).siblings().css({"z-index":0})
+							$(this).css({"z-index":1001});
+						}
+					)
+					$(obj).next().css({ "left": +offset.left-100, "top": +offset.top+$(obj).height()+12});
+				});
+	}
+
+	function add_favorite(title) {
+		$.getJSON('{APP_PATH}api.php?op=add_favorite&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
+			if(data.status==1)	{
+				$("#favorite").html('收藏成功');
+			} else {
+				alert('请登录');
+			}
+		});
+	}
+
+$(function(){
+  $('#Article .content img').LoadImage(true, 660, 660,'{IMG_PATH}s_nopic.gif');    
+})
+//-->
+</script>
+
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+<div class="bootm area">
+  <p class="fl">2012 gkstk.com All Rights Reserved.京ICP证110737号</p>
+  <p class="fr">2012 gkstk.com All Rights Reserved.京ICP证110737号</p>
+</div>
+</body>
+</html>

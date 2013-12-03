@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link href="{CSS_PATH}mxststlye.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}default_blue.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_common.js"></script>
+</head>
+<body>
+
+<div class="top">
+  <div class="top_l area">
+    <div class="loginBar fr"><a href="#" class="none">返回首页</a><a href="#">博客官方</a> <a href="#">联系我们</a><span><a href="#">立即在线沟通</a></span></div>
+ </div>
+</div>
+<div class="secure_top area">
+  <div class="secure_logo fl"><img src="{IMG_PATH}zzzsimgs/elite_logo.jpg" /></div>
+  <div class="secure_sch fr"><img src="{IMG_PATH}zzzsimgs/elite_r.jpg" /></div>
+  </div>
+<div class="elite_nav area">
+  <div class="elite_m1">
+  <map>
+    	{pc:content action="category"  catid="0" num="25" siteid="$siteid" order="listorder ASC"}
+    <ul>
+      <li><a href="{siteurl($siteid)}" id="default">首页</a></li>
+	  {loop $data $r}
+      <li><a href="{$r[url]}" id="{$r[catid]}">{$r[catname]}</a></li>	
+	  {/loop}
+    </ul>
+	{/pc}
+	</map>
+  </div>
+  <div class="elite_m2">
+     <ul>
+	 {pc:get sql="select area_fl from v9_mxst_down " num="40"}
+       <li>{loop $data $r}<a href="#">{$r[area_fl]}</a> {/loop}</li>
+	 {/pc}  
+     </ul>
+  </div>
+</div>
+<!--头部结束-->
+<div class="mb10"></div>

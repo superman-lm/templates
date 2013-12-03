@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}" />
+<meta name="description" content="{$SEO['description']}" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
+<script type="text/javascript" src="{JS_PATH}search_common.js"></script>
+
+<style type="text/css"> 
+p{margin:0;padding:0;}
+body{background:#fff;margin:0;padding:0;}
+img{border:none;}
+a:visited{color:purple;}
+.search{padding:10px;}
+.logo span {float:left;display:block;margin:37px 10px 0}
+.logo a img{float:left;margin:0 0 10px 0}
+.url{color:green;font:300 small arial;}
+#result{padding-left:20px;min-height:320px}
+#result p{width:540px;}
+h3{font:400 medium/30px '宋体';margin:10px 0 0;padding:0;}
+h3 a font{text-decoration:underline;}
+.description{font:400 small/180% arial;}
+.copy{overflow:hidden;background:#e1e1e1;height:20px;color:#555;text-align:center;font:400 12px/20px arial;margin:0;}
+.line{clear:both;height:20px;line-height:20px;background:#D9E1F7;font-size:12px;margin:5px 10px 0;padding:0 10px;}
+.line span{float:right;margin-right:5px;}
+a,a:link{color:#6300CC;}
+
+.ad160{position:absolute;left:780px;top:140px;width:265px;height:600px;}
+p#page {width:800px;height:30px;line-height:30px;padding:20px 0}
+p#page span{float:right;font-size:12px;color:#777;}
+p#page a{height: 22px;line-height: 22px;font-size: 14px;text-align: center;padding:3px 5px;border: 1px solid #E7ECF0;background: white;margin-right: 5px;text-decoration: none;vertical-align: middle;}
+p#page a.on{font-weight:800;background:#fff;color:#000;border:1px solid #fff;}
+p#page strong,p#page input{display:none}
+.inp{width: 520px;height: 22px;font: 16px/22px arial;margin: 5px 0 0 7px;padding: 0;background: white;border: 0;outline: 0;-webkit-appearance: none;}
+.s_ipt_wr{width: 533px;height: 30px;display: inline-block;margin-right: 5px;background: url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png) no-repeat -304px 0;border: 1px solid #B6B6B6;border-color: #7B7B7B #B6B6B6 #B6B6B6 #7B7B7B;vertical-align: top;}
+.sou{clear:both;padding-left:10px}
+.btn{width: 95px;height: 32px;padding-top: 2px;font-size: 14px;padding: 0;background: #DDD url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png);border: 0;cursor: pointer;}
+#loading{display:none;margin:20px;width:400px;height:50px;border:1px solid #fff}
+#ad160{position:absolute;left:700px;top:140px}
+</style>
+</head>
+<body>
+<div class=search>
+    <div class=logo><a href="#"><img src="{IMG_PATH}zzzsimgs/enroll_logo.jpg"></a> <span><a href='/'>学优高考网</a> &gt;  <a href='{siteurl($siteid)}'>安全教育</a> &gt; {catpos($catid)}</span></div>
+    <div class="sou">  <form action="{APP_PATH}index.php" method="get">
+	<span class="s_ipt_wr">
+	{pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $r}
+	            <input type="hidden" name="m" value="search"/>
+				<input type="hidden" name="c" value="index"/>
+				<input type="hidden" name="a" value="init"/>
+				<input type="hidden" name="typeid" value="{$r[typeid]}" id="typeid"/>
+				<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
+	<input type="text" id="q" name="q" class="inp" /></span> <input type="submit" id="search" value="查找资料" class="btn" /></form></div>
+	{/loop}
+	 {/pc} 
+</div>
+		{pc:content action="lists" catid="$catid" num="15" order="id DESC" page="$page"}
+<div id="result">
+		{loop $data $r}
+		<h3><a href="{$r[url]}">{$r[title]}</a></h3>
+		<p class="description">{$r[description]}</p>
+		<p class="url">{$r[url]} {date('Y-m-d H:i:s',$r[inputtime])}</p>
+		{/loop}
+		
+<p id="page">{$pages}</p>
+</div>
+{/pc}
+<div class=ad160><script type="text/javascript">BAIDU_CLB_singleFillSlot("103309");</script></div>
+<div class="copy">Copyright &copy 2006-2012 学优高考网</div>
+
+
+</body>
+</html>

@@ -1,0 +1,483 @@
+{template "content","header"}
+<!--main-->
+<div class="School_con area">
+  <div class="School_con_l fl">
+    <h2></h2>
+    <div class="School_con_list">
+       <ul>
+        <li><img src="{IMG_PATH}zzzsimgs/cent_lisr_pic.jpg" /></li>
+        <li><a href="#">2013高考语文试题</a></li>
+       </ul>
+       <ul>
+        <li><img src="{IMG_PATH}zzzsimgs/cent_lisr_pic.jpg" /></li>
+        <li><a href="#">2013高考语文试题</a></li>
+       </ul>
+       <ul>
+        <li><img src="{IMG_PATH}zzzsimgs/cent_lisr_pic.jpg" /></li>
+        <li><a href="#">2013高考语文试题</a></li>
+       </ul>
+       <ul>
+        <li><img src="{IMG_PATH}zzzsimgs/cent_lisr_pic.jpg" /></li>
+        <li><a href="#">2013高考语文试题</a></li>
+       </ul>
+    </div>
+  </div>
+  <div class="School_con_a fl">
+     <div class="School_con_t">
+	      <div class="FocusPic">
+            {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="5"}
+            	<div class="content" id="main-slide">
+                    <div class="changeDiv">  
+                        {loop $data $r}
+                        <a href="{$r['url']}" title="{str_cut($r['title'],30)}"><img src="{thumb($r['thumb'],430,167)}" alt="{$r['title']}" width="430" height="167" /></a>
+                   	    {/loop}
+                    </div>
+                </div>
+            {/pc}
+            </div>
+	 </div>
+     <div class="School_con_b">
+       <h3><a href="#">2013年各地高考语文试题及答案</a></h3>
+       <p>[<a href="#">2012高考作文与作指导素材（80份）</a>] [<a href="#">高中历史教材精解素材（39套）</a>]</p>
+       <p> [<a href="#">高中历史备课文字素材（115套）</a>] [<a href="#">2012高考英语语法讲解系列素材</a>]</p>
+    </div>
+  </div>
+
+<style>
+#menu1 li{cursor:pointer;}
+#menu2 li{cursor:pointer;}
+#menu1 li.hover{color: #0DA5E6; font-weight:bold; background:url({IMG_PATH}zzzsimgs/pub-mod-a_bg.jpg)  no-repeat;}
+#menu2 li.hover{color: #0DA5E6; font-weight:bold; background:url({IMG_PATH}zzzsimgs/pub-mod-a_bg.jpg)  no-repeat;}
+</style>
+  <div class="School_con_r fr">
+     <div class="pub-mod-a">
+       <ul id="menu1">
+        <li onClick="setTab(1,0)" >最新更新</li>
+        <li onClick="setTab(1,1)">热门阅读</li>
+       </ul>
+     </div>
+     <div class="tab-hd" id="main1">
+	 
+	{pc:get sql="SELECT * FROM v9_zwdq_news WHERE catid IN ( 34, 35, 36, 37, 38, 30, 31, 32, 33 ) ORDER BY updatetime DESC" start="0" num="8" return="data"}
+       <ul>
+	   {loop $data $r}
+         <li><a href="{$r[url]}">{$r[title]}</a></li>
+        {/loop}
+		
+       </ul>
+	 {/pc} 
+	 {pc:content action="hits" catid="19" num="8" order="views DESC"} 
+	    <ul>
+		{loop $data $r}
+        <li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
+		{/loop}
+		
+       </ul>
+	  {/pc} 
+	  
+     </div>
+  </div>
+</div>
+<div class="School_con1 area">
+  <div class="School_con1_l fl">
+    <h2><a>写作素材</a></h2>
+	{pc:get sql="select catname,url from v9_category where parentid=28 and siteid=5 order by catid desc" return="data"}
+    <ul>
+	{loop $data $r}
+      <li style="float:left;"><a href="{$r[url]}">{$r[catname]}</a>&nbsp;&nbsp;</li>
+     {/loop}
+    </ul>
+	{/pc}
+  </div>
+  <div class="School_con1_r fr">
+     <h2> 
+       <ul id="menu2">
+          <li onClick="setTab(2,0)">高一作文</li>
+          <li onClick="setTab(2,1)">高二作文</li>
+          <li onClick="setTab(2,2)">高三作文</li>
+          <li onClick="setTab(2,3)">单元作文</li>
+          <li onClick="setTab(2,4)">英语作文</li>
+       </ul>
+     </h2>
+     <div class="School_con1_r_list">
+	 <div id="main2">
+        <ul>
+		{pc:get sql="select catname,url from v9_category where parentid=22 order by catid desc" return="data" start="0" num="18"}
+          <li>
+		  {loop $data $r}
+		  <a href="{$r[url]}">{$r[catname]}</a>
+		  {/loop}
+		  </li>
+        {/pc}  
+        </ul>
+		 <ul>
+         {pc:get sql="select catname,url from v9_category where parentid=23 order by catid desc" return="data" start="0" num="18"}
+          <li>
+		  {loop $data $r}
+		  <a href="{$r[url]}">{$r[catname]}</a>
+		  {/loop}
+		  </li>
+        {/pc}  
+        </ul>
+		 <ul>
+          {pc:get sql="select catname,url from v9_category where parentid=24 order by catid desc" return="data" start="0" num="18"}
+          <li>
+		  {loop $data $r}
+		  <a href="{$r[url]}">{$r[catname]}</a>
+		  {/loop}
+		  </li>
+        {/pc}  
+        </ul>
+		 <ul>
+        {pc:get sql="select catname,url from v9_category where parentid=26 order by catid desc" return="data" start="0" num="10"}
+          <li>
+		  {loop $data $r}
+		  <a href="{$r[url]}">{$r[catname]}</a>
+		  {/loop}
+		  </li>
+        {/pc}  
+        </ul>
+		 <ul>
+        {pc:get sql="select catname,url from v9_category where parentid=29 order by catid desc" return="data" start="0" num="10"}
+          <li>
+		  {loop $data $r}
+		  <a href="{$r[url]}">{$r[catname]}</a>
+		  {/loop}
+		  </li>
+        {/pc}  
+        </ul>
+	</div>	
+     </div>
+  </div>
+</div>
+<div class="mb10"></div>
+<div class="ad960 area"><img src="{IMG_PATH}zzzsimgs/960.jpg" /></div>
+<div class="mb10"></div>
+<div class="paper area">
+   <div class="wrap-tit">
+      <h2 class="fl"><span>高考作文</span></h2>
+      <div class="link_tit">
+	  {pc:get sql="select catname,url from v9_category where parentid=25 and siteid=5 order by catid desc" return="data"}
+        <ul>
+		{loop $data $r}
+           <li><a href="{$r[url]}">{$r[catname]}</a>|</li>
+        {/loop} 
+        </ul>
+		{/pc}
+      </div>
+   </div>
+   <div class="link_p"></div>
+   <div class="mt10"></div>
+   <div class="p_list">
+     <div class="pl fl">
+       <div class="pl_t">
+           <ul>
+             <li><a href="#">吃什么补脑提高记忆力</a></li>
+             <li><a href="#">记忆大师教您轻松记牢7000单词</a></li>
+             <li><a href="#">18岁少女一年买车买房！</a></li>
+             <li><a href="#">不想上班?几千元开个小店赚钱</a></li>
+             <li><a href="#">有过性生活！一定要定期体检！</a></li>
+             <li><a href="#">200多分能上什么大学?</a></li>
+             <li><a href="#">农村墙体广告公司 湖南湘振</a></li>
+             <li><a href="#">爱丽斯婚礼（湖南婚庆NO.1）</a></li>
+             <li><a href="#">北大音像权威出版，数理化模型</a></li>
+           </ul>
+           <p class="bd-logo fr"><a href="http://wangmeng.baidu.com/"target="_blank"><img src="{IMG_PATH}zzzsimgs/bd-logo.jpg" /></a></p>
+        </div>
+       <div class="pl_c">
+          <h3><a>写作方法</a></h3>
+		  {pc:content  action="lists" catid="33" order="updatetime DESC" thumb="1" num="1" return="info"}
+		  {loop $info $v}
+          <dl>
+            <dt class="fl"><img src="{thumb($v[thumb],122,92)}" width="122" height="92" /></dt>
+            <dd class="fl"><a href="{$v[url]}">{$v[title]}</a></dd>
+          </dl>
+		  {/loop}
+		  {/pc}
+		    {pc:content action="lists" catid="33" num="3" order="id DESC" return="info"}
+          <ul>
+		  {loop $info $v}
+            <li><a href="{$v[url]}">{$v[title]}</a></li>
+          {/loop}
+          </ul>
+		  {/pc}
+        </div>
+       <div class="pl_b">
+          <h3><a>经验交流</a></h3>
+		   {pc:content action="lists" catid="31" num="9" order="id DESC" return="info"}
+          <ul>
+		  {loop $info $v}
+           <li><a href="{$v[url]}">{$v[title]}</a></li>
+		   {/loop}
+          </ul>
+		  {/pc}
+       </div>
+     </div>
+     <div class="pc fl">
+        <div class="pc_t">
+           <h3><a>高考满分作文</a></h3>
+		    {pc:content action="lists" catid="35" num="14" order="id DESC" return="info"}
+           <ul>
+		    {loop $info $v}
+             <li><a href="{$v[url]}">{$v[title]}</a></li>
+			  {/loop}
+           </ul>
+		   {/pc}
+        </div>
+        <div class="pc_b">
+           <h3><a>搞笑·零分作文</a></h3>
+		   {pc:content action="lists" catid="38" num="14" order="id DESC" return="info"}
+           <ul>
+		    {loop $info $v}
+               <li><a href="{$v[url]}">{$v[title]}</a></li>
+			 {/loop}  
+           </ul>
+		   {/pc}
+       </div>
+     </div>
+     <div class="pr fr">
+        <div class="pr_c">
+          <h3><a>高考作文预测</a></h3>
+           {pc:content  action="lists" catid="36" order="updatetime DESC" thumb="1" num="1" return="info"}
+		  {loop $info $v}
+          <dl>
+            <dt class="fl"><img src="{thumb($v[thumb],122,92)}" width="122" height="92" /></dt>
+            <dd class="fl"><a href="{$v[url]}">{$v[title]}</a></dd>
+          </dl>
+		  {/loop}
+		  {/pc}
+		    {pc:content action="lists" catid="36" num="3" order="id DESC" return="info"}
+          <ul>
+		  {loop $info $v}
+            <li><a href="{$v[url]}">{$v[title]}</a></li>
+          {/loop}
+          </ul>
+		  {/pc}
+        </div>
+        <div class="pr_t">
+          <h3><a>高考作文指导</a></h3>
+          {pc:content  action="lists" catid="34" order="updatetime DESC" thumb="1" num="1" return="info"}
+		  {loop $info $v}
+          <dl>
+            <dt class="fl"><img src="{thumb($v[thumb],122,92)}" width="122" height="92" /></dt>
+            <dd class="fl"><a href="{$v[url]}">{$v[title]}</a></dd>
+          </dl>
+		  {/loop}
+		  {/pc}
+		    {pc:content action="lists" catid="34" num="3" order="id DESC" return="info"}
+          <ul>
+		  {loop $info $v}
+            <li><a href="{$v[url]}">{$v[title]}</a></li>
+          {/loop}
+          </ul>
+		  {/pc}
+        </div>
+       <div class="pr_b">
+           <h3><a>高考话题作文</a></h3>
+		   {pc:content action="lists" catid="37" num="3" order="id DESC" return="info"}
+		 
+           <ul>
+		     {loop $info $v}
+             <li><a href="{$v[url]}">{$v[title]}</a></li>
+			 {/loop}
+		  </ul>
+		  {/pc}
+       </div>
+     </div>
+   </div>
+</div>
+<div class="mb10"></div>
+<div class="hot_trade area">
+  <div class="hot_trade area">
+    <h3><span><a href="#">热门商品</a></span></h3>
+    <div class="pic_list">
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_01.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_02.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_03.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_03.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_02.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_01.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+      <ul>
+        <li class="bod"><a href="#"><img src="{IMG_PATH}zzzsimgs/pic_list_01.jpg" /></a></li>
+        <li><a href="#">2013年）阅卷老师最喜欢的考场作文 2014年备考权威范本</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mb10"></div>
+<!--<div class="paper area">
+   <div class="wrap-tit">
+      <h2 class="fl"><span>高考作文</span></h2>
+      <div class="link_tit">
+        <ul>
+           <li><a href="#">高考作文指导</a></li>
+          <li><a href="#">高考作文指导</a>  | </li>
+          <li><a href="#">高考作                             文指导</a>  | </li>
+          <li><a href="#">高考作文指导</a>  | </li>
+          <li><a href="#">高考作文指导</a>  | </li>
+          <li><a href="#">高考作文指导</a>  | </li>
+        </ul>
+      </div>
+   </div>
+   <div class="link_p"></div>
+   <div class="mt10"></div>
+   <div class="p_list">
+     <div class="pl fl">
+       <div class="pl_c">
+          <h3><a href="#">写作方法</a></h3>
+          <dl>
+            <dt class="fl"><img src="{IMG_PATH}zzzsimgs/pl_c_oic.jpg" /></dt>
+            <dd class="fl"><a href="#">如何练成满分作文？一百个作文技法特点详述</a></dd>
+          </dl>
+          <ul>
+            <li><a href="#">如何练成满分作文？一百个作文技法特点详述</a></li>
+            <li><a href="#">写好作文开头的五种方法</a></li>
+            <li><a href="#">高考作文训练及写作提示（一）</a></li>
+          </ul>
+       </div>
+       <div class="pl_b">
+          <h3><a href="#">经验交流</a></h3>
+          <ul>
+             <li><a href="#">高考记叙文写作三大要点提高分数：会抓细节、</a></li>
+             <li><a href="#">《狼牙山五壮士》教学案例</a></li>
+             <li><a href="#">小学科学课中如何进行小组合作</a></li>
+             <li><a href="#">小学英语案例分析</a></li>
+             <li><a href="#">《两位数加一位数》教学案例及分析</a></li>
+             <li><a href="#">学习语言文字运用</a></li>
+             <li><a href="#">浅论话题作文拟题方法</a></li>
+             <li><a href="#">拟题技巧让你的作文题目赢得阅卷者的青睐</a></li>
+             <li><a href="#">高考作文如何编拟一个出彩的标题</a></li>
+          </ul>
+       </div>
+       <div class="pl_t"style="margin-top:11px;text-align:center;padding:2px">
+           <span><img src="{IMG_PATH}zzzsimgs/pci05.jpg" /></span>
+        </div>
+     </div>
+     <div class="pc fl">
+        <div class="pc_t">
+           <h3><a href="#">高考满分作文</a></h3>
+           <ul>
+              <li><a href="#">广东2013年高考满分作文：时间在流逝——上还是不上大学</a></li>
+              <li><a href="#">湖北2013高考满分作文：站在洗头房的门口</a></li>
+              <li><a href="#">上海2013年高考满分作文：我最重要的妹妹</a></li>
+              <li><a href="#">2013广东高考满分作文：神圣的尊严</a></li>
+              <li><a href="#">2013年江苏高考满分作文：绿色生活</a></li>
+              <li><a href="#">2013年上海高考满分作文：什么最重要</a></li>
+              <li><a href="#">2013上海高考满分作文：比学习更重要的事—学会做人</a></li>
+              <li><a href="#">2013北京高考满分作文：爱迪生如何看手机</a></li>
+              <li><a href="#">2013年北京高考满分作文:谈谈手机行业</a></li>
+              <li><a href="#">2013年江苏高考满分作文：蝶舞青春</a></li>
+              <li><a href="#">2013年湖南高考满分作文：宿命</a></li>
+              <li><a href="#">2013湖北高考满分作文：处世思方圆</a></li>
+              <li><a href="#">浙江2013高考语文满分作文：遗失的童真</a></li>
+              <li><a href="#">2012年全国各地高考满分作文</a></li>
+           </ul>
+        </div>
+        <div class="pc_b">
+           <h3><a href="#">搞笑·零分作文</a></h3>
+           <ul>
+              <li><a href="#">2013广东高考零分作文：我想要真正的爱和帮助</a></li>
+              <li><a href="#">2013江苏高考零分作文：梁祝与Lebron James</a></li>
+              <li><a href="#">北京2013高考零分作文：当爱迪生遇到手机刷机</a></li>
+              <li><a href="#">2013年湖南省高考零分作文：不累！雷</a></li>
+              <li><a href="#">2013年江苏省高考零分作文：探险者与蝴蝶</a></li>
+              <li><a href="#">2013年广西省高考零分作文：捡到手机之后</a></li>
+              <li><a href="#">2013年安徽省高考零分作文 ：为什么会这样?为什么不能这样?</a></li>
+              <li><a href="#">2013年重庆市高考零分作文：梦</a></li>
+              <li><a href="#">2013年浙江省高考零分作文：三句的青春怎么搞</a></li>
+              <li><a href="#">北京：2013高考零分高考作文</a></li>
+              <li><a href="#">四川零分作文：中国式平衡</a></li>
+              <li><a href="#">2013上海高考零分作文：更重要的事</a></li>
+              <li><a href="#">爆笑：2012年各地高考零分作文</a></li>
+              <li><a href="#">爆笑：2012年各地高考零分作文</a></li>
+           </ul>
+       </div>
+     </div>
+     <div class="pr fr">
+       <div class="pr_r">
+           <h3><a href="#">高考话题作文</a></h3>
+           <ul>
+             <li><a href="#">2013年高考新课标Ⅰ作文</a></li>
+             <li><a href="#">2013海南高考作文题</a></li>
+             <li><a href="#">2013四川高考作文题：平安也是一种财富</a></li>
+             <li><a href="#">2013辽宁高考语文作文题</a></li>
+             <li><a href="#">2013重庆高考语文作文题</a></li>
+             <li><a href="#">2013湖南高考语文作文题</a></li>
+             <li><a href="#">2013江西高考语文作文题</a></li>
+             <li><a href="#">2013四川高考语文作文题</a></li>
+             <li><a href="#">2013四川高考语文作文题</a></li>
+             <li><a href="#">2013四川高考语文作文题</a></li>
+             <li><a href="#">2013四川高考语文作文题</a></li>
+           </ul>
+       </div>
+       <div class="mt8"></div>
+       <div class="pr_c">
+          <h3><a href="#">高考作文预测</a></h3>
+          <dl>
+            <dt class="fl"><img src="{IMG_PATH}zzzsimgs/pr_c_pic.jpg" /></dt>
+            <dd class="fl"><a href="#">如何练成满分作文？一百个作文技法特点详述</a></dd>
+          </dl>
+          <ul>
+            <li><a href="#">如何练成满分作文？一百个作文技法特点详述</a></li>
+            <li><a href="#">写好作文开头的五种方法</a></li>
+            <li><a href="#">高考作文训练及写作提示（一）</a></li>
+          </ul>
+        </div>
+        <div class="pr_t">
+          <h3><a href="#">高考作文指导</a></h3>
+          <dl>
+            <dt class="fl"><img src="{IMG_PATH}zzzsimgs/pr_c_pic.jpg" /></dt>
+            <dd class="fl"><a href="#">如何练成满分作文？一百个作文技法特点详述</a></dd>
+          </dl>
+          <ul>
+            <li><a href="#">如何练成满分作文？一百个作文技法特点详述</a></li>
+            <li><a href="#">写好作文开头的五种方法</a></li>
+            <li><a href="#">高考作文训练及写作提示（一）</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+</div>-->
+<div class="link_960 area"><img src="{IMG_PATH}zzzsimgs/9601.jpg" /></div>
+
+
+<!--内容结束-->
+<div class="mb10"></div>
+<script>
+<!--
+/*更换显示样式*/
+function setTab(m,n){
+var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+for(i=0;i<tli.length;i++){
+tli[i].className=i==n?"hover":"";
+mli[i].style.display=i==n?"block":"none";
+}
+}
+//-->
+</script>
+<script type="text/javascript"> 
+$(function(){
+	new slide("#main-slide","cur",430,167,1);//焦点图
+	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
+})
+</script>
+{template "content","footer"}

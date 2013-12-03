@@ -1,0 +1,58 @@
+<!--底部开始-->
+ 
+<!--<div class="secure_link area">
+{pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="20" return="dat"}
+  <h2><a href="#">友情链接</a></h2>
+  <ul>
+  {loop $dat $v}
+    <li><a href="{$v[url]}">{$v[name]}</a></li>
+  {/loop} 
+  </ul>
+  {/pc}
+</div>
+
+<div class="secure_bottm area">
+  <p><a href="#">关于网站</a> | <a href="#">联系我们</a> |  <a href="#">免责声明</a> | <a href="#">新手上路</a> | <a href="#">诚聘英才</a> | <a href="#">合作单位</a> | <a href="#">免费加盟</a> | <a href="#">广告合作</a></p>
+  <p>Copyright @ 2006-2012 750gk.com　版权所有 　京ICP备11029505号</p>
+  <p>京公安备:110106100076号　This page is cached at 15:18:56</p>
+</div>
+<!--底部结束-->
+<!--</body>
+</html>-->
+<div class="link_stat area">
+   <div class="link_stat_t">
+     <h3>站内链接：</h3>
+     <ul>
+	   {pc:link  action="type_list" siteid="$siteid" typeid="53" order="listorder DESC" num="20" return="dat"}
+	    
+       <li>
+	   {loop $dat $v}
+	  <a href="{$v[url]}">{$v[name]}</a> | 
+	  {/loop}
+	  </li>
+       {/pc}
+     </ul>
+   </div>
+   <div class="link_stat_b">
+      <h3>站内链接：</h3>
+     <ul>
+       <li>
+	   {pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="20" return="dat"}
+	   {loop $dat $v}
+	   <a href="{$v[url]}">{$v[name]}</a> | 
+	   {/loop}
+	   {/pc}
+	   </li>
+       
+     </ul>
+   </div>
+</div> 
+<div class="mt10"></div>
+<div class="bottm area">
+  <p><a href="#">关于网站</a> | <a href="#">联系我们</a> |  <a href="#">免责声明</a> | <a href="#">新手上路</a> | <a href="#">诚聘英才</a> | <a href="#">合作单位</a> | <a href="#">免费加盟</a> | <a href="#">广告合作</a></p>
+  <p>Copyright @ 2006-2012 750gk.com　版权所有 　京ICP备11029505号</p>
+  <p>京公安备:110106100076号　This page is cached at 15:18:56</p>
+</div>
+<!--底部结束-->
+</body>
+</html>

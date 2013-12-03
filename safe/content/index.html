@@ -1,0 +1,135 @@
+{template "content","header"}
+<!--main-->
+<div class="mt10"></div>
+<div class="secure_con area">
+  <div class="secure_con_l fl">
+     <div class="secure_con_t">
+       <div class="secure_con_fish fl">
+	   <DIV id=idContainer2 class=container>
+		<TABLE id=idSlider2 border=0 cellSpacing=0 cellPadding=0>
+		  <TBODY>
+		  <TR>
+			<TD class=td_f><A href="#" target="_blank"><img src="{IMG_PATH}zzzsimgs/secure_con_pic.jpg" /></A></TD>
+			<TD class=td_f><A href="#" target="_blank"><img src="{IMG_PATH}zzzsimgs/secure_con_pic.jpg" /></A></TD>
+			<TD class=td_f><A href="#" target="_blank"><img src="{IMG_PATH}zzzsimgs/secure_con_pic.jpg" /></A></TD>
+			<TD class=td_f><A href="#" target="_blank"><img src="{IMG_PATH}zzzsimgs/secure_con_pic.jpg" /></A></TD>
+			<TD class=td_f><A href="#" target="_blank"><img src="{IMG_PATH}zzzsimgs/secure_con_pic.jpg" /></A></TD>
+		   </TR></TBODY></TABLE>
+<UL id=idNum class=num></UL>
+</DIV>
+<SCRIPT>
+	var forEach = function(array, callback, thisObject){
+		if(array.forEach){
+			array.forEach(callback, thisObject);
+		}else{
+			for (var i = 0, len = array.length; i < len; i++) { callback.call(thisObject, array[i], i, array); }
+		}
+	}
+	
+	var st = new SlideTrans("idContainer2", "idSlider2", 5, { Vertical: false });
+	
+	var nums = [];
+	//插入数字
+	for(var i = 0, n = st._count - 1; i <= n;){
+		(nums[i] = $("idNum").appendChild(document.createElement("li"))).innerHTML = ++i;
+	}
+	
+	forEach(nums, function(o, i){
+		o.onmouseover = function(){ o.className = "on"; st.Auto = false; st.Run(i); }
+		o.onmouseout = function(){ o.className = ""; st.Auto = true; st.Run(); }
+	})
+	
+	//设置按钮样式
+	st.onStart = function(){
+		forEach(nums, function(o, i){ o.className = st.Index == i ? "on" : ""; })
+	}
+	st.Run();
+</SCRIPT>
+</div>
+       <div class="secure_con_list fr">
+          <h2><a>最新信息</a></h2>
+          <ul>
+		  {pc:get sql="select * from v9_aqjy_news order by id desc" cache="3600" num="8" return="data"}
+		    {loop $data $r}
+            <li><a href="{$r[url]}">{$r[title]}</a></li>
+            {/loop}
+          {/pc}
+          </ul>
+       </div>
+     </div>
+     <div class="secure_con_b">
+        <div class="secure_con_title">
+          <h2><a>图文信息</a><span></span></h2>
+        </div>
+        <div class="secure_con_pic">
+		 {pc:content  action="position" posid="12" thumb="1" order="listorder DESC" num="4"}
+		 {loop $data $r}
+          <ul>
+            <li class="bot"><img src="{thumb($r[thumb],124,78)}" title="{$r[title]}"/></li>
+            <li><a href="{$r[url]}">{$r[title]}</a></li>
+          </ul>
+         {/loop}
+		 {/pc}
+        </div>
+    </div>
+  </div>
+  <div class="secure_con_r fr">
+    <h2><a>热门</a></h2>
+	{if $top_parentid}
+	{pc:content action="hits" catid="$top_parentid" num="4" order="views DESC"}
+    <div class="secure_con_r_list">
+	{loop $data $r}
+      <dl>
+        <dt><img src="{IMG_PATH}zzzsimgs/secure_con_r_pic.jpg" /></dt>
+        <dd><a href="{$r[url]}"><strong>{$r[title]}</strong></a></dd>
+        <dd>{str_cut($r['description'],40)}/dd>
+      </dl>
+     {/loop}
+    </div>
+	{/pc}
+	{/if}
+  </div>
+</div>
+<div class="mt10"></div>
+<div class="secure_con2 area">
+
+  <div class="secure_con2_l fl" style="width:650px;">
+  {loop subcat(0,0,0,$siteid) $r}
+     {php $num++}
+    <div class="secure_con2_l_t" style="float:left; margin-right: 23px; width:300px;">
+       <h2><span class="fr"><a href="{$r[url]}">更多>></a></span><a href="{$r[url]}">{$r[catname]}</a></h2>
+       <div class="secure_con2_l_list">
+	    {pc:content action="lists" catid="$r[catid]" num="10" order="id DESC" return="info"}
+	   <ul style="background:url({IMG_PATH}zzzsimgs/num_list.png) no-repeat;">
+	      {loop $info $v}
+         <li><a href="{$v['url']}">{str_cut($v['title'],40)}</a></li>
+          {/loop}
+       </ul>
+	   {/pc}
+	   </div>
+    </div>
+	{if $num%2==0}<div class="bk10"></div>{/if}
+	{/loop}
+  </div>
+
+  <div class="secure_con2_r fr" style="float:left; padding-left:5px;">
+    <p><img src="{IMG_PATH}zzzsimgs/secure_con2_r_pic.jpg" /></p>
+    <div class="secure_con2_l_ts">
+        <h2><a>文章排行</a></h2>
+		
+       <div class="secure_con2_l_list"><ul>
+	  {pc:content action="hits" num="10" order="views DESC"}
+	   	<ul style="background:url({IMG_PATH}zzzsimgs/num_list.png) no-repeat;">
+        {loop $data $r}        
+         <li><a href="{$r[url]}">{$r[title]}</a></li>
+        {/loop}
+       </ul>
+	    {/pc}
+       </div>
+     
+    </div>
+    <p><img src="{IMG_PATH}zzzsimgs/secure_con2_r_pic.jpg" /></p>
+  </div>
+  </div>
+</div>
+{template "content","footer"}

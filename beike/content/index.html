@@ -1,0 +1,242 @@
+{template "content","header"}
+<!--main-->
+
+<div class="main area">
+    <div class="ml fl">
+      <div class="ml_t">
+	  <div class="FocusPic">
+            {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="5"}
+            	<div class="content" id="main-slide" style="height:301px;">
+                    <div class="changeDiv">  
+                        {loop $data $r}
+                        <a href="{$r['url']}" title="{str_cut($r['title'],30)}"><img src="{thumb($r['thumb'],310,310)}" alt="{$r['title']}" width="310" height="260" /></a>
+                   	    {/loop}
+                    </div>
+                </div>
+            {/pc}
+            </div>
+	  </div>
+      <div class="ml_b">
+        <h3><a href="#">今日名校</a></h3>
+        <ul>
+          <li><a href="#">长安一中</a></li>
+          <li><a href="#">北京四中</a></li>
+          <li><a href="#">包头一中</a></li>
+          <li><a href="#">包头一中</a></li>
+          <li><a href="#">包头一中</a></li>
+          <li><a href="#">包头一中</a></li>
+          <li><a href="#">包头一中</a></li>
+          <li><a href="#">包头一中</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ma fl">
+      <div class="ma_t">
+        <div class="ma_t_l">
+          <p><a href="#">2013全国各地高考试题及答案发布 高考作文点评</a></p>
+          <em>[<a href="#">2013四川一诊</a>] [<a href="#">2013广东一模</a>] [<a href="#">2013北京期末</a>] [<a href="#">2013湖北调研</a>]
+[<a href="#">2013长春二模</a>] [<a href="#">2013广州一模</a>] [<a href="#">2013兰州一诊</a>] [<a href="#">2013青岛一模</a>]</em>
+          <p><a href="#">2013高考题汇总：语文</a> <a href="#">数学</a> <a href="#">理综</a> <a href="#">文综</a> <a href="#">英语</a></p>
+          <em>[<a href="#">2013四川一诊</a>] [<a href="#">2013广东一模</a>] [<a href="#">2013北京期末</a>] [<a href="#">2013湖北调研</a>]
+[<a href="#">2013长春二模</a>] [<a href="#">2013广州一模</a>] [<a href="#">2013兰州一诊</a>] [<a href="#">2013青岛一模</a>]</em>
+        </div>
+        <div class="ma_t_r">
+          <ul id="menu1">
+            <li onmouseover="setTab(1,0)" style=" cursor:pointer;"><a>高三名题</a></li>
+            <li onmouseover="setTab(1,1)" style=" cursor:pointer;"><a>高二名题</a></li>
+            <li onmouseover="setTab(1,2)" style=" cursor:pointer;"><a>高一名题</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ma_a" id="main1">
+	  {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	  {loop $data $t}
+	   {pc:get sql="select title,inputtime,keywords from v9_mxst_down where nianji_fl='高三试题' and posids='1' order by id desc" num="10"}
+        <ul>
+		 {loop $data $r}
+		
+          <li><span>{date('Y-m-d',$r[inputtime])}</span><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$r[keywords]}">·{$r[title]}</a></li>
+		 {/loop}
+        </ul>
+		{/pc}
+		{/loop}
+		{/pc}
+		 {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	  {loop $data $t}
+	   {pc:get sql="select title,inputtime,keywords from v9_mxst_down where nianji_fl='高二试题' and posids='1' order by id desc" num="10"}
+        <ul>
+		 {loop $data $r}
+          <li><span>{date('Y-m-d',$r[inputtime])}</span><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$r[keywords]}">·{$r[title]}</a></li>
+		 {/loop}
+        </ul>
+		{/pc}
+		{/loop}
+		{/pc}
+		 {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	  {loop $data $t}
+	   {pc:get sql="select title,inputtime,keywords from v9_mxst_down where nianji_fl='高一试题' and posids='1' order by id desc" num="10"}
+        <ul>
+		 {loop $data $r}
+          <li><span>{date('Y-m-d',$r[inputtime])}</span><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$r[keywords]}">·{$r[title]}</a></li>
+		 {/loop}
+        </ul>
+		{/pc}
+		{/loop}
+		{/pc}
+      </div>
+    </div>
+    <div class="mr fr">
+      <div class="mr_t">
+        <ul>
+          <li><span class="clor">1</span><a href="#">备战2014：诗歌鉴赏专项训练</a></li>
+          <li><span class="clor">2</span><a href="#">备战2014：诗歌鉴赏专项训练</a></li>
+          <li><span class="clor">3</span><a href="#">备战2014：诗歌鉴赏专项训练</a></li>
+          <li><span >4</span><a href="#">备战2014：诗歌鉴赏专项训练</a></li>
+        </ul>
+      </div>
+      <div class="mr_b">
+	   {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	  {loop $data $t}
+	   {pc:get sql="select title,keywords from v9_mxst_down where posids='1' and thumb !='' order by id desc" num="4"}
+	   {loop $data $r}
+        <ul>
+          <li class="bot"><img src="{thumb($r['thumb'],90,90)}" /></li>
+          <li><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$r[keywords]}">{$r[title]}/a></li>
+        </ul>
+		{/loop}
+		{/pc}
+		{/loop}
+		{/pc}
+      </div>
+    </div>
+</div>
+<div class="mb10"></div>
+ {loop subcat(0,0,0,$siteid) $r}
+  {php $num++}
+  {php $catname=$r[catname]; $catid=$r[catid]; $catdir=$r[catdir];}
+  
+<div class="chinese area">
+  <div class="{$catdir}_l fl">
+  
+    <h2>
+	{$r[catname]}{$r[catdir]}
+	{pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+	 {pc:get sql="select catname,url from v9_category where parentid=$catid order by catid asc" num="3"}
+	<span class="fr">
+	{loop $data $r}
+    <a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}&{$r[catname]}"> {$r[catname]}</a>|{/loop}</span>{/pc}{/loop}{/pc}
+	</h2>
+	
+	{pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+    <div class="chinese_l_list">
+       <div class="chin_l_list_a">
+          <h3><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}模拟">{$catname}模拟</a><em></em></h3>
+		 {pc:get sql="select url,title from v9_mxst_down where catid=$catid and leixing_fl='高考模拟' order by id desc" num="7"}
+          <ul>
+		   {loop $data $r}
+            <li><a href="{$r['url']}">{$r['title']}</a></li>
+		   {/loop}
+          </ul>
+		{/pc}
+       </div>
+	  {/loop}
+	   {/pc}
+	   {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+       <div class="chin_l_list_a">
+          <h3><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}月考">{$catname}月考</a><em></em></h3>
+           {pc:get sql="select url,title from v9_mxst_down where catid=$catid  and leixing_fl='月考' order by id desc" num="7"}
+          <ul>
+		   {loop $data $r}
+            <li><a href="{$r['url']}">{$r['title']}</a></li>
+		   {/loop}
+          </ul>
+		{/pc}
+       </div>
+	   {/loop}
+	   {/pc}
+	     {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+       <div class="chin_l_list_a">
+          <h3><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}期中">{$catname}期中</a><em></em></h3>
+         {pc:get sql="select url,title from v9_mxst_down where catid=$catid and leixing_fl='期中考试' order by id desc" num="7"}
+          <ul>
+		   {loop $data $r}
+            <li><a href="{$r['url']}">{$r['title']}</a></li>
+		   {/loop}
+          </ul>
+		{/pc}
+       </div>
+	    {/loop}
+	   {/pc}
+	    {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+       <div class="chin_l_list_a">
+          <h3><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}期末">{$catname}期末</a><em></em></h3>
+         {pc:get sql="select url,title from v9_mxst_down where catid=$catid and leixing_fl='期末考试' order by id desc" num="7"}
+          <ul>
+		   {loop $data $r}
+            <li><a href="{$r['url']}">{$r['title']}</a></li>
+		   {/loop}
+          </ul>
+		{/pc}
+       </div>
+	     {/loop}
+	   {/pc}
+    </div>
+  </div>
+  <div class="chinese_r fr">
+   {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+     <div class="chinese_r_t">
+       <h2><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}高考">{$catname}高考</a></h2>
+       {pc:get sql="select url,title from v9_mxst_down where catid=$catid and leixing_fl='历年高考' order by id desc" num="7"}
+          <ul>
+		   {loop $data $r}
+            <li><a href="{$r['url']}">{$r['title']}</a></li>
+		   {/loop}
+          </ul>
+		{/pc}
+     </div>
+	  {/loop}
+	   {/pc}  
+	    {pc:get sql="select typeid from v9_type where siteid=$siteid and `module` = 'search' order by listorder desc"}
+	{loop $data $t}	
+     <div class="chinese_r_b">
+       <h2><a href="{APP_PATH}index.php?m=search&c=index&a=init&typeid={$t[typeid]}&siteid={$siteid}&q={$catname}专题">{$catname}专题</a></h2>
+        <ul>
+          <li><img src="imgs/pic02.jpg" /></li>
+          <li>2013高考语文复习</li>
+        </ul>
+        <ul>
+          <li><img src="imgs/pic02.jpg" /></li>
+          <li>2013高考语文复习</li>
+        </ul>
+        <p>2014届高三语文《测评手册》阶段评估检测
+2013届高三语文最新专项综合演练</p>
+     </div>
+	   {/loop}
+	   {/pc}   
+  </div> 
+</div>
+{/loop}
+<div class="mb10"></div>
+<script type="text/javascript"> 
+$(function(){
+	new slide("#main-slide","cur",310,310,1);//焦点图
+	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
+})
+</script>
+<script>
+function setTab(m,n){
+var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+for(i=0;i<tli.length;i++){
+tli[i].className=i==n?"hover":"";
+mli[i].style.display=i==n?"block":"none";
+}
+}
+</script>
+{template "content","footer"}
