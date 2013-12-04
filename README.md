@@ -1,0 +1,3 @@
+templates
+=========
+/phpcms/templates
