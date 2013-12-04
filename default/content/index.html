@@ -156,7 +156,7 @@ $(function(){
       <dl id="con1_l_B_info_1">
         <dd>
           <p class="img"><a href="/index.php?m=content&c=index&a=show&catid=177&id=99958"><img src="{IMG_PATH}zzzsimgs/centa4.jpg" /></a><a href="/index.php?m=content&c=index&a=show&catid=177&id=99958">山西省历年中考分类汇编：有理数与实数;山西省历年中考分类汇编：有理数与实数…</a></p>
-      {pc:get sql="select url,title from v9_mxst_down where catid=177 and zhuti2='历年真题' order by id desc" num="6" return="gaosan_rd"}
+      {pc:get sql="select url,title from v9_mxst_down where catid=177 and zhuti2='历年真题' group by title order by id desc" num="6" return="gaosan_rd"}
       {loop $gaosan_rd $jp}
        <p><a href="{$jp[url]}">·{str_cut($jp[title],50)} </a></p>
        {/loop}
@@ -167,7 +167,7 @@ $(function(){
       <dl id="con1_l_B_info_2" style="display:none;">
         <dd>
           <p class="img"><a href="/index.php?m=content&c=index&a=show&catid=177&id=1891"><img src="{IMG_PATH}zzzsimgs/centa5.jpg" /></a><a href="/index.php?m=content&c=index&a=show&catid=177&id=1891">广东省茂名市2013届高三第一次高考模拟考试数学（理）试题;广东省茂名市2013届高三第一次高考模拟考试数学（理）试题…</a></p>
-      {pc:get sql="select url,title from v9_mxst_down where catid=177 and zhuti2='高考模拟' order by id desc" num="6" return="gaosan_rd"}
+      {pc:get sql="select url,title from v9_mxst_down where catid=177 and zhuti2='高考模拟' group by title order by id desc" num="6" return="gaosan_rd"}
       {loop $gaosan_rd $jp}
        <p><a href="{$jp[url]}">·{str_cut($jp[title],50)} </a></p>
        {/loop}
