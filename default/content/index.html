@@ -61,29 +61,27 @@ $(function(){
     <div class="list_r" id="login_xx"  style="{if $_username}display:none;{else}display:'';{/if}">
       <div class="land">
        <form method="post" action="index.php?m=member&c=index&a=login" id="myform" name="myform">
-       <input type="hidden" name="forward" id="forward" value="/">
-<input type="hidden" name="dosubmit" value="1"/>
-
-       <label for="user" class="user">账户</label>
-      <input type="text" id="username" name="username" size="22" class="input-text">
-<div style="margin:5px 0;">
-    <label class="control-label" for="inputWarning">密码 </label>
-    <input type="password" id="password" name="password" size="22" class="input-text">
-</div>
-    <div class="input">
-	<label>验证码：</label><input type="text" id="code" name="code" size="8" class="input-text">
-
-
-<img id="code_img" width="100" height="24" onclick="this.src=this.src+'&'+Math.random()" src="http://www.qyzywz.com/api.php?op=checkcode&code_len=5&font_size=14&width=120&height=26&font_color=&background=&0.19476872752420604&0.9317783897276968&0.6829130572732538&0.4060351005755365">
-
-</div>
-
+        <input type="hidden" name="forward" id="forward" value="/">
+		<input type="hidden" name="dosubmit" value="1"/>
+			<div>
+	      		<label for="user" class="user">账户</label>
+	      		<input type="text" id="username" name="username" size="22" class="input-text">
+      		</div>
+			<div style="margin:5px 0;">
+			    <label class="control-label" for="inputWarning">密码 </label>
+			    <input type="password" id="password" name="password" size="22" class="input-text">
+			</div>
+		    <div class="input">
+				<label>验证码：</label>
+				<input type="text" id="code" name="code" size="8" class="input-text">
+				<img id="code_img" width="80" height="24" onclick="this.src=this.src+'&'+Math.random()" src="http://www.qyzywz.com/api.php?op=checkcode&code_len=5&font_size=14&width=120&height=26&font_color=&background=&0.19476872752420604&0.9317783897276968&0.6829130572732538&0.4060351005755365">
+			</div>
       </div> 
       <div class="next">
          <p class="xieyi clearfix">
-<div class=" fl"><input type="button" class="circle" onclick="login();" value="登录" style="border: 0px;color: white;cursor: pointer;"/></div>
-<label class="fr" style="padding-top:6px;"><input type="checkbox" name="cache" value='1'/>
-<span>下次自动登录</span></label></p>
+			<div class=" fl"><input type="button" class="circle" onclick="login();" value="登录" style="border: 0px;color: white;cursor: pointer;"/></div>
+			<label class="fr" style="padding-top:6px;"><input type="checkbox" name="cache" value='1'/>
+			<span>下次自动登录</span></label></p>
        </div> 
 </form>     
 
