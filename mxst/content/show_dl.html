@@ -5,7 +5,8 @@
 <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
 <meta name="keywords" content="{$SEO['keyword']}" />
 <meta name="description" content="{$SEO['description']}" />
-
+<script type="text/javascript" src="{JS_PATH}art/artDialog.js"></script>
+<link href="{JS_PATH}art/skins/green.css" rel="stylesheet" type="text/css" />
 <link href="{CSS_PATH}downdefault.css" rel="stylesheet" type="text/css">
 <link href="{CSS_PATH}resource.css" rel="stylesheet" type="text/css">
 <!--<link href="../../../../statics/css/downdefault.css" rel="stylesheet" type="text/css">
@@ -137,6 +138,17 @@ $(function(){
 	new slide("#main-slide","cur",310,260,1);//焦点图
 	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
 })
+function showArt() {
+	var myDialog = art.dialog();// 初始化一个带有loading图标的空对话框
+	var url = this.url;
+	alert(url);
+	$.ajax({
+	    url: url,
+	    success: function (data) {
+	        myDialog.content(data);// 填充对话框内容
+	    }
+	});
+}
 </script>
 
 <div class="mt10"></div>

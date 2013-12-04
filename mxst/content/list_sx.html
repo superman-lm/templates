@@ -2,122 +2,18 @@
 <link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="/statics/js/tab.js"></script>
-<script type="text/javascript">
-    $(function () {
-        //选中filter下的所有a标签，为其添加hover方法，该方法有两个参数，分别是鼠标移上和移开所执行的函数。
-        $("#filter a").hover(
-            function () {
-                $(this).addClass("seling");
-            },
-            function () {
-                $(this).removeClass("seling");
-            }
-        );
 
-
-        //选中filter下所有的dt标签，并且为dt标签后面的第一个dd标签下的a标签添加样式seled。(感叹jquery的强大)
-        $("#filter ul+li a").attr("class", "seled"); /*注意：这儿应该是设置(attr)样式，而不是添加样式(addClass)，
-                                                      不然后面通过$("#filter a[class='seled']")访问不到class样式为seled的a标签。*/       
-
-        //为filter下的所有a标签添加单击事件
-        $("#filter a").click(function () {
-            $(this).parents("ul").children("li").each(function () {
-				//下面三种方式效果相同（第三种写法的内部就是调用了find()函数，所以，第二、三种方法是等价的。）
-                //$(this).children("div").children("a").removeClass("seled");
-				//$(this).find("a").removeClass("seled");
-				$('a',this).removeClass("seled");
-            });
-
-            $(this).attr("class", "seled");
-
-          
-        });
-       
-    });
-
-    function RetSelecteds() {
-        var result = "";
-        $("#filter a[class='seled']").each(function () {
-            result += $(this).html()+"\n";
-        });
-        return result;
-    }
-</script>
 <!--main-->
 <!--{$_GET['area']}-->
-<style>
-.ny_wdjfb_a{ height:27px; width:100%;}
-.ny_wdjfb_a li {float:left; text-align:center; display:block; cursor:pointer;}
-.ny_wdjfb_a li a{ padding:2px 20px;}
-.ny_wdjfb_a ul .hover a {color: #FFF;background:#09F;}
-.ny_wdjfb_b{overflow:hidden;}
-</style>
+
 
 <div class="main">
 	<!--left_bar-->
 	<div class="col-left" style="overflow:hidden; width:100%; margin-bottom:10px;">
     <div class="crumbs"><a href="#">首页</a><span> > </span>{catpos($catid)}</div>
-    
-{pc:get sql="SELECT distinct leibie FROM `v9_mxst_down` where  trim(leibie)<>'论文' order by id desc" num="50" return="leibie" }
-  <div style="overflow:hidden; margin:10px 0;  width:100%;" >
-<div class="ny_wdjfb_a" id="filter">
-<ul>
-<li id="one1" onclick="setTab('one',1,6)" class="hover"><a href="/index.php?m=content&c=index&a=lists&catid=204">全部</a></li>
-<li id="one2" onclick="setTab('one',2,6)"><a href="index.php?m=content&c=index&a=lists&catid=204&leibie=试题">试题</a></li>
-<li id="one3" onclick="setTab('one',3,6)"><a href="index.php?m=content&c=index&a=lists&catid=204&leibie=教案">教案</a></li>
-<li id="one4" onclick="setTab('one',4,6)"><a href="index.php?m=content&c=index&a=lists&catid=204&leibie=课件">课件</a></li>
-<li id="one5" onclick="setTab('one',5,6)"><a href="index.php?m=content&c=index&a=lists&catid=204&leibie=素材">素材</a></li>
-<li id="one6" onclick="setTab('one',6,6)"><a href="index.php?m=content&c=index&a=lists&catid=204&leibie=学案">学案</a></li>
-</ul>
-</div>
-<div class="ny_wdjfb_b" >
-<div id="con_one_1">
-<div class="ny_wdjfb_a">
-<ul>
-<li id="onee1" onclick="setTab('onee',1,2)" class="hover">我的积分</li>
-<li id="onee2" onclick="setTab('onee',2,2)">积分换券</li></ul></div>
-<div class="ny_wdjfb_b" >
-<div id="con_onee_1">
-<div class="ny_wdjfb_a">
-<ul><li id="oneee1" onclick="setTab('oneee',1,2)" class="hover">我的积分</li>
-               <li id="oneee2" onclick="setTab('oneee',2,2)">积分换券</li></ul></div>
-<div class="ny_wdjfb_b" >
-<div id="con_oneee_1">
-</div>
-
-<div id="con_oneee_1">
-</div>
-</div> 
-
-</div>
-
-<div id="con_onee_1">
-</div>
-</div>              
-</div>
-<div id="con_one_2" style="display: none">
-dfdkkkkkkdsaass
-</div>
-<div id="con_one_3" style="display: none">
-dfdkkkkkkdsaass
-</div>
-<div id="con_one_4" style="display: none">
-dfdkkkkkkdsaass
-</div>
-<div id="con_one_5" style="display: none">
-dfdkkkkkkdsaass
-</div>
-<div id="con_one_6" style="display: none">
-dfdkkkkkkdsaass
-</div>
-
-
-
-
-
-</div>
-
-</div>     
+ 
+   <p></p>
+   
 
         
 {php $_where = " 1=1 "}
@@ -164,7 +60,7 @@ dfdkkkkkkdsaass
         	<dl class="down_list sysnews">
               <dt><h5><a target="_blank" href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></h5></dt>
               <dd class="down_txt">{$r[description]}</dd>
-              <dd class="down_attribute align_r"><span class="icon_1">软件大小：{$r[filesize]}</span><span class="icon_3">星级：{$r[stars]}</span><span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span></dd>
+              <dd class="down_attribute align_r"><span class="icon_1">文件大小：{$r[filesize]}</span><span class="icon_3">星级：{$r[stars]}</span><span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span></dd>
             </dl>
 		{/loop}	
         	<!--pages-->

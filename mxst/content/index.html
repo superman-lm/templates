@@ -1,6 +1,6 @@
 {template "content","header"}
 <!--main-->
-
+<p></p>
 <div class="main area">
     <div class="ml fl">
       <div class="ml_t">
@@ -114,6 +114,7 @@
  {loop subcat(0,0,0,$siteid) $r}
   {php $num++}
   {php $catname=$r[catname]; $catid=$r[catid]; $catdir=$r[catdir];}
+
   
 <div class="chinese area">
   <div class="{$catdir}_l fl">

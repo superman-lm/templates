@@ -13,21 +13,59 @@
 <script type="text/javascript" src="{JS_PATH}search_common.js"></script>
 </head>
 <body>
-
+{php $_where = " 1=1 "}
 <div class="top">
   <div class="top_l area">
     <div class="loginBar fr"><a href="#" class="none">返回首页</a><a href="#">博客官方</a> <a href="#">联系我们</a><span><a href="#">立即在线沟通</a></span></div>
  </div>
 </div>
+{if $catid==206}
+<style>
+.search_l{ width:490px; line-height:22px;padding-top: 15px;padding-bottom: 5px;}
+.logo_r{margin-left: 10px;padding-top: 14px;}
+.logo_r em{ color:#38a2ea;}
+.search_form{ margin-top:32px;}
+.search_form .search_input{ background:url(/statics/images/zzzsimgs/search_input.jpg) no-repeat; width:380px; height:34px; border:none; line-height:34px; font-size:14px;}
+.search_form .search_btn{ background:url(/statics/images/zzzsimgs/search_btn.jpg) no-repeat; width:86px; height:34px; border:none; font-weight:bold;}
+
+</style>
+<div class="Search area">
+  <div class="search_l fl">
+    <div class="logo_l fl"><a href="index.html"><img src="{IMG_PATH}zzzsimgs/logo.jpg" /></a></div>
+    <div class="logo_r fl">
+       <span><img src="{IMG_PATH}zzzsimgs/Sina.jpg" /> {if $area_fl == "内蒙"}内蒙高考频道{else}全国通用{/if}</span>
+       <p>最近更新：<em>2376</em> 昨天：<em>2134</em> 本周：<em>13308</em> 总量：<em>3313878</em></p>
+     </div>
+  </div>
+  <div class="search_r fr">
+    <div class="search_form">
+      <form action="index.php" method="get">
+				<input type="hidden" name="m" value="search">
+				<input type="hidden" name="c" value="index">
+				<input type="hidden" name="a" value="init">
+				<input type="hidden" name="typeid" value="63" id="typeid">
+				<input type="hidden" name="siteid" value="2" id="siteid">
+         <input name="q"  id="q" type="text" class="search_input fl" onBlur="if (value ==''){value=''}" onClick="if(this.value!='')this.value=''" value="">
+         <input type="submit" class="search_btn fl"  value="搜索">
+      </form>
+    </div>
+  </div>
+</div>
+{else}
 <div class="secure_top area">
   <div class="secure_logo fl">{if $catid==177}
 <img src="{IMG_PATH}zzzsimgs/elite_logo.jpg" />
 {/if}
 {if $catid==204}
 <img src="{IMG_PATH}zzzsimgs/bkzx_logo.jpg" />
-{/if}</div>
+{/if}
+
+
+</div>
   <div class="secure_sch fr"><img src="{IMG_PATH}zzzsimgs/elite_r.jpg" /></div>
   </div>
+{/if}
+
 <div class="elite_nav area">
   <div class="elite_m1">
   <map>
@@ -43,7 +81,7 @@
   </div>
   <div class="elite_m2">
      <ul>
-	 {pc:get sql="select area_fl from v9_mxst_down " num="40"}
+	 {pc:get sql="select area_fl from v9_mxst_down" num="40"}
        <li>{loop $data $r}<a href="#">{$r[area_fl]}</a> {/loop}</li>
 	 {/pc}  
      </ul>

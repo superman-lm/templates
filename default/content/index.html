@@ -1,4 +1,4 @@
-<!--main-->
+﻿<!--main-->
 
 {template "content","header"}
 
@@ -1101,7 +1101,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='语文' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='语文' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=语文&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1130,7 +1130,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='数学' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='数学' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=数学&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1158,7 +1158,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='英语' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='英语' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=英语&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1185,7 +1185,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='物理' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='物理' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=物理&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1212,7 +1212,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='化学' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='化学' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=化学&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1239,7 +1239,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='生物' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='生物' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=生物&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1266,7 +1266,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='政治' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='政治' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=政治&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1293,7 +1293,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='历史' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='历史' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=历史&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">
@@ -1320,7 +1320,7 @@ $(function(){
      <div class="a1">
        <span><strong>{$bb[banben2]}</strong></span>
        <ul>
-         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='地理' order by 'banbie' desc " num="10"  return="banbie" }
+         {pc:get sql="SELECT distinct banbie FROM `v9_mxst_down`  where  trim(banbie)<>'' and xueke_fl='地理' order by ASCII(RIGHT(banbie,1)) " num="10"  return="banbie" }
       {loop $banbie $bx}
      <li class="fl"><p class="fl"><a href="/index.php?m=content&c=index&a=lists&catid=204&xueke_fl=地理&banben2={$bb[banben2]}&banbie={$bx[banbie]}"><strong>{$bx[banbie]}</strong> </a></p>
       <p class="fr">

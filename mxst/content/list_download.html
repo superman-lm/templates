@@ -1,4 +1,5 @@
 {template "content","header"}
+
 <link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
 <!--main-->
 <!--{$_GET['area']}-->
@@ -24,7 +25,6 @@
 			{/pc}
             </ul>
         </div>
-{php $_where = " 1=1 "}
 
 {if $_GET["area_fl"] != ""}
 {php $_where =  $_where." AND area_fl='" . $_GET["area_fl"]."' "}
@@ -59,6 +59,7 @@
 {if $_GET["stsm"] != ""}
 {php $_where = $_where." AND stsm like '".$_GET["stsm"]."%'"}
 {/if}
+
         {pc:content action="lists"   catid="$catid" where="$_where"  num="15" order="id DESC" page="$page"}
 
 
@@ -68,7 +69,7 @@
         	<dl class="down_list sysnews">
               <dt><h5><a target="_blank" href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></h5></dt>
               <dd class="down_txt">{$r[description]}</dd>
-              <dd class="down_attribute align_r"><span class="icon_1">软件大小：{$r[filesize]}</span><span class="icon_3">星级：{$r[stars]}</span><span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span></dd>
+              <dd class="down_attribute align_r"><span class="icon_1">文件大小：{$r[filesize]}</span><span class="icon_3">星级：{$r[stars]}</span><span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span></dd>
             </dl>
 		{/loop}	
         	<!--pages-->
