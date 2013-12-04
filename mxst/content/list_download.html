@@ -27,7 +27,7 @@
         </div>
 
 {if iconv("gb2312","UTF-8",$_GET["area_fl"]) != ""}
-{php $_where =  $_where." AND area_fl='" . $_GET["area_fl"]."' "}
+{php $_where =  $_where." AND area_fl='" . iconv("gb2312","UTF-8",$_GET["area_fl"])."' "}
 {/if}
 
 {if iconv("gb2312","UTF-8",$_GET["xueke_fl"]) != ""}
