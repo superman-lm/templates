@@ -26,24 +26,24 @@
             </ul>
         </div>
 
-{if $_GET["area_fl"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["area_fl"]) != ""}
 {php $_where =  $_where." AND area_fl='" . $_GET["area_fl"]."' "}
 {/if}
 
-{if $_GET["xueke_fl"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["xueke_fl"]) != ""}
 {php $_where = $_where." AND xueke_fl='" . $_GET["xueke_fl"]."' "}
 {/if}
-{if $_GET["zhuti2"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["zhuti2"]) != ""}
 {php $_where =  $_where." AND zhuti2='" . $_GET["zhuti2"]."' "}
 {/if}
-{if $_GET["nianji_fl"] == "高中"}
+{if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "高中"}
 	{php $_where = $_where." AND nianji_fl like '%高%' "}
 {else}
-    {if $_GET["nianji_fl"] == "初中"}
+    {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "初中"}
 	    {php $_where = $_where." AND nianji_fl='七年级' "}
     {else}
-        {if $_GET["nianji_fl"] != ""}
-            {php $_where = $_where." AND nianji_fl='" . $_GET["nianji_fl"]."' "}
+        {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) != ""}
+            {php $_where = $_where." AND nianji_fl='" . iconv("gb2312","UTF-8",$_GET["nianji_fl"])."' "}
         {/if}
 {/if}
 {/if}
@@ -60,8 +60,7 @@
 {php $_where = $_where." AND stsm like '".$_GET["stsm"]."%'"}
 {/if}
 
-        {pc:content action="lists"   catid="$catid" where="$_where"  num="15" order="id DESC" page="$page"}
-
+        {pc:content action="lists" catid="$catid" where="$_where"  num="15" order="id DESC" page="$page"}
 
 <div style="overflow:hidden; width:100%; margin-bottom:10px;">
  <div class="box boxsbg" style="float:left;width: 650px;">
