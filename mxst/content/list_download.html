@@ -31,10 +31,10 @@
 {/if}
 
 {if iconv("gb2312","UTF-8",$_GET["xueke_fl"]) != ""}
-{php $_where = $_where." AND xueke_fl='" . $_GET["xueke_fl"]."' "}
+{php $_where = $_where." AND xueke_fl='" . iconv("gb2312","UTF-8",$_GET["xueke_fl"])."' "}
 {/if}
 {if iconv("gb2312","UTF-8",$_GET["zhuti2"]) != ""}
-{php $_where =  $_where." AND zhuti2='" . $_GET["zhuti2"]."' "}
+{php $_where =  $_where." AND zhuti2='" . iconv("gb2312","UTF-8",$_GET["zhuti2"])."' "}
 {/if}
 {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "高中"}
 	{php $_where = $_where." AND nianji_fl like '%高%' "}
