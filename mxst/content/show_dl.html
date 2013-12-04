@@ -6,9 +6,10 @@
 <meta name="keywords" content="{$SEO['keyword']}" />
 <meta name="description" content="{$SEO['description']}" />
 <script type="text/javascript" src="{JS_PATH}art/artDialog.js"></script>
-<link href="{JS_PATH}art/skins/green.css" rel="stylesheet" type="text/css" />
+
 <link href="{CSS_PATH}downdefault.css" rel="stylesheet" type="text/css">
 <link href="{CSS_PATH}resource.css" rel="stylesheet" type="text/css">
+<link href="{JS_PATH}art/skins/default.css" rel="stylesheet" type="text/css" />
 <!--<link href="../../../../statics/css/downdefault.css" rel="stylesheet" type="text/css">
 <link href="../../../../statics/css/resource.css" rel="stylesheet" type="text/css">-->
 </head>
@@ -86,7 +87,7 @@
 <a href="{loop $downfiles $r}
 {php echo preg_replace("/<a href='(.*)'(.*)<\/a>/iUs",'\\1',$r)}
 {/loop}"
- title="{$title}" ><img src="{IMG_PATH}zzzsimgs/paper.gif">
+ title="{$title}" onclick="return showArt(this);"><img src="{IMG_PATH}zzzsimgs/paper.gif">
 </a> <a href=""><img src="{IMG_PATH}zzzsimgs/sczy.gif"></a>
 </p>
 <table style="width:400px;padding-top: 10px" cellspacing="0" cellpadding="0">
@@ -138,16 +139,16 @@ $(function(){
 	new slide("#main-slide","cur",310,260,1);//焦点图
 	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
 })
-function showArt() {
-	var myDialog = art.dialog();// 初始化一个带有loading图标的空对话框
-	var url = this.url;
-	alert(url);
+function showArt(a) {
+	var myDialog = art.dialog({title: "提示"});// 初始化一个带有loading图标的空对话框
+	var url = a.href;
 	$.ajax({
 	    url: url,
 	    success: function (data) {
 	        myDialog.content(data);// 填充对话框内容
 	    }
 	});
+	return false;
 }
 </script>
 
