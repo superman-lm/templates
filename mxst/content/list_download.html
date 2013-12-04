@@ -37,10 +37,10 @@
 {php $_where =  $_where." AND zhuti2='" . $_GET["zhuti2"]."' "}
 {/if}
 {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "高中"}
-	{php $_where = $_where." AND nianji_fl like '%高%' "}
+	{php $_where = $_where." AND nianji_fl like '高%' "}
 {else}
     {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "初中"}
-	    {php $_where = $_where." AND nianji_fl='七年级' "}
+	    {php $_where = $_where." AND nianji_fl in ('七年级', '八年级', '九年级') "}
     {else}
         {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) != ""}
             {php $_where = $_where." AND nianji_fl='" . iconv("gb2312","UTF-8",$_GET["nianji_fl"])."' "}
