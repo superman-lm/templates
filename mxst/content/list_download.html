@@ -25,39 +25,66 @@
 			{/pc}
             </ul>
         </div>
-
-{if iconv("gb2312","UTF-8",$_GET["area_fl"]) != ""}
-{php $_where =  $_where." AND area_fl='" . iconv("gb2312","UTF-8",$_GET["area_fl"])."' "}
-{/if}
-
-{if iconv("gb2312","UTF-8",$_GET["xueke_fl"]) != ""}
-{php $_where = $_where." AND xueke_fl='" . iconv("gb2312","UTF-8",$_GET["xueke_fl"])."' "}
-{/if}
-{if iconv("gb2312","UTF-8",$_GET["zhuti2"]) != ""}
-{php $_where =  $_where." AND zhuti2='" . iconv("gb2312","UTF-8",$_GET["zhuti2"])."' "}
-{/if}
-{if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "高中"}
-	{php $_where = $_where." AND nianji_fl like '%高%' "}
+{php $_where = " 1=1 "}
+{if $_GET["area_fl"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["area_fl"]) == ""}
+	{php $_where = $_where." AND area_fl='" . $_GET["area_fl"]."' "}
 {else}
-    {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "初中"}
-	    {php $_where = $_where." AND nianji_fl='七年级' "}
+	{php $_where = $_where." AND area_fl='" . iconv("gb2312","UTF-8",$_GET["area_fl"])."' "}
+{/if}
+{/if}
+{if $_GET["xueke_fl"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["xueke_fl"]) == ""}
+	{php $_where = $_where." AND xueke_fl='" . $_GET["xueke_fl"]."' "}
+{else}
+	{php $_where = $_where." AND xueke_fl='" . iconv("gb2312","UTF-8",$_GET["xueke_fl"])."' "}
+{/if}
+{/if}
+{if $_GET["zhuti2"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["zhuti2"]) == ""}
+	{php $_where = $_where." AND zhuti2='" . $_GET["zhuti2"]."' "}
+{else}
+	{php $_where = $_where." AND zhuti2='" . iconv("gb2312","UTF-8",$_GET["zhuti2"])."' "}
+{/if}
+{/if}
+{if $_GET["nianji_fl"] == "高中"}
+        {php $_where = $_where." AND nianji_fl like '高%' "}
+{else}
+    {if $_GET["nianji_fl"] == "初中"}
+            {php $_where = $_where." AND nianji_fl in ('七年级', '八年级', '九年级') "}
     {else}
-        {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) != ""}
-            {php $_where = $_where." AND nianji_fl='" . iconv("gb2312","UTF-8",$_GET["nianji_fl"])."' "}
+        {if $_GET["nianji_fl"] != ""}
+            {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == ""}
+				{php $_where = $_where." AND nianji_fl='" . $_GET["nianji_fl"]."' "}
+			{else}
+				{php $_where = $_where." AND nianji_fl='" . iconv("gb2312","UTF-8",$_GET["nianji_fl"])."' "}
+			{/if}
         {/if}
 {/if}
 {/if}
-{if iconv("gb2312","UTF-8",$_GET["banben2"]) != ""}
-{php $_where = $_where." AND banben2='" . iconv("gb2312","UTF-8",$_GET["banben2"])."' "}
+{if $_GET["banben2"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["banben2"]) == ""}
+	{php $_where = $_where." AND banben2='" . $_GET["banben2"]."' "}
+{else}
+	{php $_where = $_where." AND banben2='" . iconv("gb2312","UTF-8",$_GET["banben2"])."' "}
 {/if}
-{if iconv("gb2312","UTF-8",$_GET["banbie"]) != ""}
-{php $_where = $_where." AND banbie='" . iconv("gb2312","UTF-8",$_GET["banbie"])."' "}
 {/if}
-{if iconv("gb2312","UTF-8",$_GET["leibie"]) == "试题"}
+{if $_GET["banbie"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["banbie"]) == ""}
+	{php $_where = $_where." AND banbie='" . $_GET["banbie"]."' "}
+{else}
+	{php $_where = $_where." AND banbie='" . iconv("gb2312","UTF-8",$_GET["banbie"])."' "}
+{/if}
+{/if}
+{if $_GET["leibie"] == "试题"}
 {php $_where = $_where." AND leibie='试题' "}
 {/if}
-{if iconv("gb2312","UTF-8",$_GET["stsm"]) != ""}
-{php $_where = $_where." AND stsm like '".iconv("gb2312","UTF-8",$_GET["stsm"])."%'"}
+{if $_GET["stsm"] != ""}
+{if iconv("gb2312","UTF-8",$_GET["stsm"]) == ""}
+	{php $_where = $_where." AND stsm='" . $_GET["stsm"]."' "}
+{else}
+	{php $_where = $_where." AND stsm='" . iconv("gb2312","UTF-8",$_GET["stsm"])."' "}
+{/if}
 {/if}
 
         {pc:content action="lists" catid="$catid" where="$_where"  num="15" order="id DESC" page="$page"}
