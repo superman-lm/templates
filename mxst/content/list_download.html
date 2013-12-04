@@ -37,27 +37,27 @@
 {php $_where =  $_where." AND zhuti2='" . $_GET["zhuti2"]."' "}
 {/if}
 {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "高中"}
-	{php $_where = $_where." AND nianji_fl like '高%' "}
+	{php $_where = $_where." AND nianji_fl like '%高%' "}
 {else}
     {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) == "初中"}
-	    {php $_where = $_where." AND nianji_fl in ('七年级', '八年级', '九年级') "}
+	    {php $_where = $_where." AND nianji_fl='七年级' "}
     {else}
         {if iconv("gb2312","UTF-8",$_GET["nianji_fl"]) != ""}
             {php $_where = $_where." AND nianji_fl='" . iconv("gb2312","UTF-8",$_GET["nianji_fl"])."' "}
         {/if}
 {/if}
 {/if}
-{if $_GET["banben2"] != ""}
-{php $_where = $_where." AND banben2='" . $_GET["banben2"]."' "}
+{if iconv("gb2312","UTF-8",$_GET["banben2"]) != ""}
+{php $_where = $_where." AND banben2='" . iconv("gb2312","UTF-8",$_GET["banben2"])."' "}
 {/if}
-{if $_GET["banbie"] != ""}
-{php $_where = $_where." AND banbie='" . $_GET["banbie"]."' "}
+{if iconv("gb2312","UTF-8",$_GET["banbie"]) != ""}
+{php $_where = $_where." AND banbie='" . iconv("gb2312","UTF-8",$_GET["banbie"])."' "}
 {/if}
-{if $_GET["leibie"] == "试题"}
+{if iconv("gb2312","UTF-8",$_GET["leibie"]) == "试题"}
 {php $_where = $_where." AND leibie='试题' "}
 {/if}
-{if $_GET["stsm"] != ""}
-{php $_where = $_where." AND stsm like '".$_GET["stsm"]."%'"}
+{if iconv("gb2312","UTF-8",$_GET["stsm"]) != ""}
+{php $_where = $_where." AND stsm like '".iconv("gb2312","UTF-8",$_GET["stsm"])."%'"}
 {/if}
 
         {pc:content action="lists" catid="$catid" where="$_where"  num="15" order="id DESC" page="$page"}
